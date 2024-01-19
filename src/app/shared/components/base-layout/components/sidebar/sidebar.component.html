@@ -1,0 +1,55 @@
+<nz-sider
+  nzCollapsible
+  [nzBreakpoint]="breakpoint"
+  [(nzCollapsed)]="isCollapsed"
+  nzWidth="var(--expanded-sidebar-width)"
+  (nzCollapsedChange)="changeCollapse($event)"
+  [nzTrigger]="null"
+>
+  <div class="sidebar-logo">
+    <a routerLink="/dashboard">
+      <img src="https://ng.ant.design/assets/img/logo.svg" alt="logo" />
+      <h1>Base CMS Ng-zorro</h1>
+    </a>
+  </div>
+  <ul nz-menu nzTheme="dark" nzMode="inline">
+    <ng-container
+      *ngTemplateOutlet="menuTpl; context: { $implicit: menus }"
+    ></ng-container>
+    <ng-template #menuTpl let-menus>
+      <ng-container *ngFor="let menu of menus">
+        <ng-template [hasPermission]="menu.permissions">
+          <li
+            *ngIf="!menu.children"
+            nz-menu-item
+            [nzPaddingLeft]="menu.level * 24"
+            [nzDisabled]="menu.disabled"
+            [nzMatchRouter]="true"
+          >
+            <span nz-icon [nzType]="menu.icon" *ngIf="menu.icon"></span>
+            <span
+              ><a [routerLink]="[menu.route]">{{ menu.title }}</a></span
+            >
+          </li>
+          <li
+            *ngIf="menu.children"
+            nz-submenu
+            [nzPaddingLeft]="menu.level * 24"
+            [nzTitle]="menu.title"
+            [nzIcon]="menu.icon"
+            [nzDisabled]="menu.disabled"
+          >
+            <ul>
+              <ng-container
+                *ngTemplateOutlet="
+                  menuTpl;
+                  context: { $implicit: menu.children }
+                "
+              ></ng-container>
+            </ul>
+          </li>
+        </ng-template>
+      </ng-container>
+    </ng-template>
+  </ul>
+</nz-sider>

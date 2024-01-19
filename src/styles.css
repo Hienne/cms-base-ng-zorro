@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* @import "~ng-zorro-antd/ng-zorro-antd.min.css"; */
+@import "../node_modules/ng-zorro-antd/style/index.min.css";
+@import "~ng-zorro-antd/button/style/index.min.css";
+@import "~ng-zorro-antd/layout/style/index.min.css";
+@import "~ng-zorro-antd/menu/style/index.min.css";
+@import "~ng-zorro-antd/breadcrumb/style/index.min.css";
+@import "~ng-zorro-antd/notification/style/index.min.css";
+@import "~ng-zorro-antd/form/style/index.min.css";
+@import "~ng-zorro-antd/input/style/index.min.css";
+@import "~ng-zorro-antd/checkbox/style/index.min.css";
+
+:root {
+    --expanded-sidebar-width: 250px;
+    --narrowed-sidebar-width: 80px
+}
