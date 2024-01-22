@@ -21,13 +21,13 @@ export class AuthService {
 
   constructor() {
     this._isLoggedIn$.next(!!this.token);
-    // this.user = this.getUser(this.token);
+    this.user = this.getUser(this.token);
 
     // fake user
-    this.user = {
-      name: 'hien',
-      permissions: ['can_view'],
-    };
+    // this.user = {
+    //   name: 'hien',
+    //   permissions: ['can_view'],
+    // };
   }
 
   hasPermission(

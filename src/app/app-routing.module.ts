@@ -2,16 +2,17 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules, PreloadingStrategy } from '@angular/router';
 import { authGuard } from './core/authentication/auth.guard';
 import { PreloadSelectedModule } from './core/services/preload-selected-modules.service';
-import { MainComponent } from './modules/main/main.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 const routes: Routes = [
   {
     path: 'login',
-    loadComponent: async () => (await import('./modules/auth/login.component')).LoginComponent,
+    loadComponent: async () => (await import('./pages/login/login.component')).LoginComponent,
   },
   {
     path: '',
-    loadChildren: async () => (await import('./modules/main/main.module')).MainModule,
+    loadChildren: async () => (await import('./pages/main/main.module')).MainModule,
   },
+  { path: '**', component: NotFoundComponent }
 ];
 
 @NgModule({

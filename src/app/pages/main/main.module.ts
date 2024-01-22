@@ -12,7 +12,7 @@ const ROUTES: Routes = [
       {
         path: 'dashboard',
         loadChildren: async () =>
-          (await import('./../dashboard/dashboard.module')).DashboardModule,
+          (await import('../../modules/dashboard/dashboard.module')).DashboardModule,
         data: {
           breadcrumb: 'Dashboard',
         },
@@ -20,7 +20,7 @@ const ROUTES: Routes = [
       {
         path: 'kanban',
         loadChildren: async () =>
-          (await import('./../kanban/kanban.module')).KanbanModule,
+          (await import('../../modules/kanban/kanban.module')).KanbanModule,
         // canActivate: [authGuard],
         data: {
           breadcrumb: 'Kanban',

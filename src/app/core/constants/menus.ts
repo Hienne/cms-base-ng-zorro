@@ -7,7 +7,7 @@ export const MENUS: TMenu[] = [
     icon: 'dashboard',
     disabled: false,
     route: 'dashboard',
-    permissions: ['can_view']
+    permissions: []
   },
   {
     level: 1,
@@ -15,6 +15,6 @@ export const MENUS: TMenu[] = [
     icon: 'carry-out',
     route: 'kanban',
     disabled: false,
-    permissions: ['can_view']
+    permissions: []
   }
 ];
