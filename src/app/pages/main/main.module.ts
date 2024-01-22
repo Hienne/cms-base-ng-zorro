@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MainComponent } from './main.component';
 import { BaseLayoutModule } from 'src/app/shared/components/base-layout/base-layout.module';
 import { RouterModule, Routes } from '@angular/router';
+import { authGuard } from 'src/app/core/authentication/auth.guard';
 
 const ROUTES: Routes = [
   {
@@ -15,16 +16,18 @@ const ROUTES: Routes = [
           (await import('../../modules/dashboard/dashboard.module')).DashboardModule,
         data: {
           breadcrumb: 'Dashboard',
+          permissions: ['can_view']
         },
       },
       {
         path: 'kanban',
         loadChildren: async () =>
           (await import('../../modules/kanban/kanban.module')).KanbanModule,
-        // canActivate: [authGuard],
+        canActivate: [authGuard],
         data: {
           breadcrumb: 'Kanban',
           preload: true,
+          permissions: ['can_view']
         },
       },
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },

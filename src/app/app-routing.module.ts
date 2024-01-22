@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules, PreloadingStrategy } from '@angular/router';
-import { authGuard } from './core/authentication/auth.guard';
 import { PreloadSelectedModule } from './core/services/preload-selected-modules.service';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 const routes: Routes = [

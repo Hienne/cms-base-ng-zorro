@@ -22,21 +22,15 @@ export class AuthService {
   constructor() {
     this._isLoggedIn$.next(!!this.token);
     this.user = this.getUser(this.token);
-
-    // fake user
-    // this.user = {
-    //   name: 'hien',
-    //   permissions: ['can_view'],
-    // };
   }
 
   hasPermission(
     permissions: string[],
     permissionOperator: PermissionOperator = 'OR'
   ): boolean {
-    if (!this.user || !this.user.permissions.length) return false;
+    if (!permissions || !permissions.length) return true;
 
-    if (!permissions || !permissions.length) return false;
+    if (!this.user || !this.user.permissions.length) return false;
 
     if (permissionOperator === 'OR') {
       return permissions.some((p) => this.user?.permissions.includes(p));
